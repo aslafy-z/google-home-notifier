@@ -2,23 +2,18 @@
   "name": "google-home-notifier",
   "version": "1.2.0",
   "description": "",
-  "main": "google-home-notifier.js",
+  "main": "handler.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Noel Portugal",
-  "keywords": [
-    "google home",
-    "notifications",
-    "notifier"
-  ],
+  "keywords": ["google home", "notifications", "notifier"],
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.15.2",
     "castv2-client": "^1.1.2",
     "express": "^4.14.0",
     "google-tts-api": "0.0.2",
-    "mdns": "^2.3.3",
-    "npm": "^6.0.0"
+    "mdns": "^2.3.3"
   }
 }

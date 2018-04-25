@@ -2,17 +2,17 @@ var express = require('express');
 var googlehome = require('./google-home-notifier');
 var bodyParser = require('body-parser');
 var app = express();
-const serverPort = 8080; // default port
+const serverPort = process.env.SERVER_PORT || 8080; // default port
 
-var deviceName = 'Ghom';
-var ip = '192.168.1.85'; // default IP
+var deviceName = process.env.DEVICE_NAME || 'Ghom';
+var ip = process.env.DEVICE_IP || '192.168.1.85'; // default IP
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/google-home-notifier', function(req, res) {
   var text = null;
-  var language = 'fr'; // default language code
+  var language = process.env.DEFAULT_LANGUAGE || 'fr'; // default language code
 
   if (req.body) {
     if (req.body.text) text = req.body.text;
@@ -47,10 +47,10 @@ app.post('/google-home-notifier', function(req, res) {
       res.send(err);
     }
   } else {
-    res.send('Please GET "text=Hello Google Home"');
+    res.send('Please POST "text=Hello Google Home"');
   }
 });
 
 app.listen(serverPort, function() {
-  console.log('Listening to :8080');
+  console.log('Listening to :' + serverPort);
 });
